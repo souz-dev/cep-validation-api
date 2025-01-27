@@ -9,6 +9,6 @@ export const mockAddressModel = (): AddressModel => ({
   city: "Florianópolis",
   street: "Rua Example",
   district: "Centro",
-  createdAt: new Date(),
-  updatedAt: new Date(),
+  createdAt: new Date("2025-01-27T23:08:10.216Z"),
+  updatedAt: new Date("2025-01-27T23:08:10.216Z"),
 });
