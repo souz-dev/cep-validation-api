@@ -1,8 +1,14 @@
 import { ValidateCepController } from "@/presentation/controllers/validate-cep-controller";
 import { ValidateCep, ValidateCepParams } from "@/domain/usecases/validate-cep";
-import { ok, serverError } from "@/presentation/helpers/http-helper";
+import {
+  ok,
+  serverError,
+  badRequest,
+} from "@/presentation/helpers/http-helper";
 import { AddressModel } from "@/domain/usecases/models/addres";
 import { mockAddressModel } from "./mock-address";
+import { HttpRequest } from "../protocols/http";
+import { AddressRepository } from "@/data/protocols/address-repository";
 
 const makeValidateCep = (): ValidateCep => {
   class ValidateCepStub implements ValidateCep {
@@ -16,15 +22,35 @@ const makeValidateCep = (): ValidateCep => {
 interface SutTypes {
   sut: ValidateCepController;
   validateCepStub: ValidateCep;
+  addressRepositoryStub: AddressRepository;
 }
 
 const makeSut = (): SutTypes => {
-  const validateCepStub = makeValidateCep();
-  const sut = new ValidateCepController(validateCepStub);
-  return {
-    sut,
-    validateCepStub,
+  const validateCepStub = {
+    validate: jest.fn().mockResolvedValue({
+      id: "any_id",
+      name: "John Doe",
+      email: "john@example.com",
+      cep: "88040600",
+      state: "SC",
+      city: "Florianópolis",
+      street: "Rua Example",
+      district: "Centro",
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }),
   };
+
+  const addressRepositoryStub = {
+    findByEmail: jest.fn().mockResolvedValue(null),
+    create: jest.fn(),
+    findAll: jest.fn(),
+    findById: jest.fn(),
+    update: jest.fn(),
+  };
+
+  const sut = new ValidateCepController(validateCepStub, addressRepositoryStub);
+  return { sut, validateCepStub, addressRepositoryStub };
 };
 
 describe("ValidateCep Controller", () => {
@@ -63,6 +89,33 @@ describe("ValidateCep Controller", () => {
     };
     const httpResponse = await sut.handle(httpRequest);
     expect(httpResponse.statusCode).toBe(400);
+  });
+
+  test("Should return 400 if email is already in use", async () => {
+    const { sut, addressRepositoryStub } = makeSut();
+    jest.spyOn(addressRepositoryStub, "findByEmail").mockResolvedValueOnce({
+      id: "any_id",
+      name: "John Doe",
+      email: "existing@example.com",
+      cep: "88040600",
+      state: "SC",
+      city: "Florianópolis",
+      street: "Rua Example",
+      district: "Centro",
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+
+    const httpRequest: HttpRequest = {
+      body: {
+        name: "John Doe",
+        email: "existing@example.com",
+        cep: "88040600",
+      },
+    };
+
+    const httpResponse = await sut.handle(httpRequest);
+    expect(httpResponse).toEqual(badRequest(new Error("Email already in use")));
   });
 
   test("Should return 400 if no cep is provided", async () => {

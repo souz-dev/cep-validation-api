@@ -10,6 +10,13 @@ export class DbValidateCep implements ValidateCep {
   ) {}
 
   async validate(params: ValidateCepParams): Promise<AddressModel> {
+    const existingAddress = await this.addressRepository.findByEmail(
+      params.email
+    );
+    if (existingAddress) {
+      throw new Error("Email already in use");
+    }
+
     const validatedAddress = await this.cepValidator.validate(params.cep);
     return await this.addressRepository.create({
       name: params.name,

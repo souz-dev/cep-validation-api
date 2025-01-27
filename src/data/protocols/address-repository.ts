@@ -14,5 +14,6 @@ export interface AddressRepository {
   create: (data: AddressData) => Promise<AddressModel>;
   findAll: () => Promise<AddressModel[]>;
   findById: (id: string) => Promise<AddressModel | null>;
+  findByEmail: (email: string) => Promise<AddressModel | null>;
   update: (id: string, data: AddressData) => Promise<AddressModel>;
 }
