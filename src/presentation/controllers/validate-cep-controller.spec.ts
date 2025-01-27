@@ -1,10 +1,6 @@
 import { ValidateCepController } from "@/presentation/controllers/validate-cep-controller";
 import { ValidateCep, ValidateCepParams } from "@/domain/usecases/validate-cep";
-import {
-  badRequest,
-  ok,
-  serverError,
-} from "@/presentation/helpers/http-helper";
+import { ok, serverError } from "@/presentation/helpers/http-helper";
 import { AddressModel } from "@/domain/usecases/models/addres";
 import { mockAddressModel } from "./mock-address";
 
