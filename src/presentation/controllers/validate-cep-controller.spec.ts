@@ -47,6 +47,7 @@ const makeSut = (): SutTypes => {
     findAll: jest.fn(),
     findById: jest.fn(),
     update: jest.fn(),
+    delete: jest.fn(),
   };
 
   const sut = new ValidateCepController(validateCepStub, addressRepositoryStub);

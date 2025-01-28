@@ -52,4 +52,9 @@ export class PrismaAddressRepository implements AddressRepository {
       },
     });
   }
+  async delete(id: string): Promise<AddressModel> {
+    return await this.prisma.address.delete({
+      where: { id },
+    });
+  }
 }
