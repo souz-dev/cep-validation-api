@@ -21,7 +21,11 @@ export class DbValidateCep implements ValidateCep {
     return await this.addressRepository.create({
       name: params.name,
       email: params.email,
-      ...validatedAddress,
+      cep: validatedAddress.cep,
+      state: validatedAddress.state,
+      city: validatedAddress.city,
+      street: validatedAddress.street,
+      district: validatedAddress.district,
     });
   }
 }
