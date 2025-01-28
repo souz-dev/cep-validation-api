@@ -4,7 +4,7 @@ import {
   UpdateAddressParams,
 } from "@/domain/usecases/update-address";
 import { UpdateAddressController } from "./update-address-controller";
-import { AddressModel } from "@/domain/usecases/models/addres";
+import { AddressModel } from "@/domain/usecases/models/address";
 import { mockAddressModel } from "./mock-address";
 
 // Factory para criar um mock de UpdateAddress

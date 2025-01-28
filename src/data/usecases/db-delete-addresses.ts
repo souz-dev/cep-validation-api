@@ -1,6 +1,6 @@
 import { DeleteAddress } from "@/domain/usecases/delete-addresses";
 import { AddressRepository } from "../protocols/address-repository";
-import { AddressModel } from "@/domain/usecases/models/addres";
+import { AddressModel } from "@/domain/usecases/models/address";
 
 export class DbDeleteAddress implements DeleteAddress {
   constructor(private readonly addressRepository: AddressRepository) {}

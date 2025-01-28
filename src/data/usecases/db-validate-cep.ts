@@ -1,7 +1,7 @@
 import { ValidateCep, ValidateCepParams } from "@/domain/usecases/validate-cep";
 import { CepValidator } from "../protocols/cep-validator";
 import { AddressRepository } from "../protocols/address-repository";
-import { AddressModel } from "@/domain/usecases/models/addres";
+import { AddressModel } from "@/domain/usecases/models/address";
 
 export class DbValidateCep implements ValidateCep {
   constructor(

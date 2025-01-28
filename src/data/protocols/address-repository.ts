@@ -1,4 +1,4 @@
-import { AddressModel } from "@/domain/usecases/models/addres";
+import { AddressModel } from "@/domain/usecases/models/address";
 
 export type AddressData = {
   name: string;

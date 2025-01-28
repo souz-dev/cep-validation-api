@@ -4,7 +4,7 @@ import {
 } from "@/domain/usecases/update-address";
 import { AddressRepository } from "../protocols/address-repository";
 import { CepValidator } from "../protocols/cep-validator";
-import { AddressModel } from "@/domain/usecases/models/addres";
+import { AddressModel } from "@/domain/usecases/models/address";
 
 export class DbUpdateAddress implements UpdateAddress {
   constructor(

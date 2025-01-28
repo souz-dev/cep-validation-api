@@ -5,7 +5,7 @@ import {
   serverError,
   badRequest,
 } from "@/presentation/helpers/http-helper";
-import { AddressModel } from "@/domain/usecases/models/addres";
+import { AddressModel } from "@/domain/usecases/models/address";
 import { mockAddressModel } from "./mock-address";
 import { HttpRequest } from "../protocols/http";
 import { AddressRepository } from "@/data/protocols/address-repository";

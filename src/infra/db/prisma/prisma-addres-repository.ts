@@ -3,7 +3,7 @@ import {
   AddressRepository,
   AddressData,
 } from "@/data/protocols/address-repository";
-import { AddressModel } from "@/domain/usecases/models/addres";
+import { AddressModel } from "@/domain/usecases/models/address";
 
 export class PrismaAddressRepository implements AddressRepository {
   constructor(private readonly prisma: PrismaClient) {}

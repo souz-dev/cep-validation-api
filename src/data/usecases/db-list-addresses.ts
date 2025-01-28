@@ -1,6 +1,6 @@
 import { ListAddresses } from "@/domain/usecases/list-addresses";
 import { AddressRepository } from "../protocols/address-repository";
-import { AddressModel } from "@/domain/usecases/models/addres";
+import { AddressModel } from "@/domain/usecases/models/address";
 
 export class DbListAddresses implements ListAddresses {
   constructor(private readonly addressRepository: AddressRepository) {}

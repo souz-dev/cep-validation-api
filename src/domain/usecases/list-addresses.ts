@@ -1,4 +1,4 @@
-import { AddressModel } from "./models/addres";
+import { AddressModel } from "./models/address";
 
 export interface ListAddresses {
   list: () => Promise<AddressModel[]>;

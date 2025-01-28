@@ -6,7 +6,7 @@ import {
 } from "../helpers/http-helper";
 import { DeleteAddress } from "@/domain/usecases/delete-addresses";
 import { DeleteAddressController } from "./delete-address-controller";
-import { AddressModel } from "@/domain/usecases/models/addres";
+import { AddressModel } from "@/domain/usecases/models/address";
 import { mockAddressModel } from "./mock-address";
 
 const makeDeleteAddress = (): DeleteAddress => {
