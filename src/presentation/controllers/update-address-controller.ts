@@ -10,32 +10,33 @@ export class UpdateAddressController implements Controller {
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
       const schema = z.object({
-        id: z.string().uuid("Invalid ID"),
         name: z.string().min(1, "Name is required"),
         email: z.string().email("Invalid email"),
         cep: z.string().length(8, "CEP must be 8 characters"),
-        state: z.string().min(1, "State is required"),
-        city: z.string().min(1, "City is required"),
-        street: z.string().min(1, "Street is required"),
-        district: z.string().min(1, "District is required"),
       });
 
-      const validation = schema.safeParse({
-        ...httpRequest.body,
-        id: httpRequest.params?.id,
-      });
+      const validation = schema.safeParse(httpRequest.body);
 
       if (!validation.success) {
         return badRequest(validation.error);
       }
 
-      const address = await this.updateAddress.update(validation.data);
-
-      if (!address) {
-        return notFound(new Error("Address not found"));
+      const id = httpRequest.params?.id;
+      if (!id) {
+        return badRequest(new Error("Missing address id"));
       }
 
-      return ok(address);
+      try {
+        const address = await this.updateAddress.update({
+          id,
+          name: httpRequest.body.name,
+          email: httpRequest.body.email,
+          cep: httpRequest.body.cep,
+        });
+        return ok(address);
+      } catch (error) {
+        return notFound(new Error("Address not found"));
+      }
     } catch (error) {
       return serverError(new Error("Internal server error"));
     }
