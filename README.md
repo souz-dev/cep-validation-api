@@ -1,77 +1,145 @@
-<div align="center">
-  <br />
-    <a href="#" target="_blank">
-      <img src="https://raw.githubusercontent.com/souz-dev/ProManage-interactive/refs/heads/master/assets/readme-img.png" alt="Project Banner">
-    </a>
-  <br />
+# 📦 CEP Validation API
 
-  <div>
-    <img src="https://img.shields.io/badge/-TypeScript-black?style=for-the-badge&logoColor=white&logo=typescript&color=3178C6" alt="TypeScript" />
-    <img src="https://img.shields.io/badge/-Node.js-black?style=for-the-badge&logoColor=white&logo=node.js&color=339933" alt="Node.js" />
-    <img src="https://img.shields.io/badge/-Express-black?style=for-the-badge&logoColor=white&logo=express&color=000000" alt="Express" />
-    <img src="https://img.shields.io/badge/-Prisma-black?style=for-the-badge&logoColor=white&logo=prisma&color=2D3748" alt="Prisma" />
-    <img src="https://img.shields.io/badge/-PostgreSQL-black?style=for-the-badge&logoColor=white&logo=postgresql&color=336791" alt="PostgreSQL" />
-  </div>
-<br/><br/></br>
+---
 
-  <h1 align="center">Register Form API</h1>
-
-   <div align="center">
-    A complete API for managing addresses.
-    </div>
-</div>
-
-## 📋 <a name="table">Sumary</a>
+## 📋 Table of Contents
 
 1. 🚀 [Introduction](#introduction)
 2. ⚙️ [Tech Stack](#tech-stack)
 3. 🔋 [Features](#features)
-4. 💻 [Envs](#env)
+4. 💾 [Environment Variables](#environment-variables)
 5. 💻 [Quick Start](#quick-start)
 6. 🤝 [Contributing](#contributing)
 7. 👥 [Authors](#authors)
 
+---
+
 ## <a name="introduction">🚀 Introduction</a>
 
-Web API for managing addresses. The application allows users to create, edit, delete, and list addresses. The API offers a clear and organized way to manage address data efficiently.
+CEP Validation API is a RESTful service that allows users to validate Brazilian ZIP codes (CEPs) by querying external services. The API follows Clean Architecture principles to ensure maintainability and scalability.
+
+---
 
 ## <a name="tech-stack">⚙️ Tech Stack</a>
 
-- TypeScript
-- Node.js
-- Express
-- Prisma
-- PostgreSQL
+- **Node.js** - Runtime for JavaScript
+- **TypeScript** - Strongly typed JavaScript
+- **Express.js** - Fast and lightweight web framework
+- **Prisma** - ORM for database access
+- **Axios** - HTTP client for making external API requests
+- **Zod** - Schema validation library
+- **Docker** - Containerization for easy deployment
+- **Jest** - Testing framework
+
+---
 
 ## <a name="features">🔋 Features</a>
 
-- **Address creation**: Allows the creation of new addresses with detailed information such as name, email, and CEP.
-- **Editing Addresses**: Allows you to edit information on existing addresses.
-- **Deleting Addresses**: Allows you to delete addresses that are no longer needed.
-- **Listing Addresses**: View the list of all addresses.
+- **CEP Validation**: Query and validate Brazilian ZIP codes.
+- **RESTful API**: Follows REST principles for resource management.
+- **Clean Architecture**: Modular and scalable codebase.
+- **Database Integration**: Uses Prisma for data persistence.
+- **Environment Configurable**: Uses `.env` files for configuration.
+- **Testing Suite**: Includes unit and integration tests with Jest and Supertest.
+
+---
 
 ## <a name="envs">💾 Environment Variables</a>
 
-<details>
-<summary><code>.env</code></summary>
+Create a `.env` file in the project root and configure the following variables:
 
+```ini
+# Database Connection
+DATABASE_URL=
 
-</details>
+```
+
+For reference, see `.env.example` in the repository.
+
+---
 
 ## <a name="quick-start">💻 Quick Start</a>
-**00 - Prerequisites**
 
-To use this project you must have previously installed the following packages:
+### 1️⃣ Prerequisites
+
+Ensure you have the following installed:
 
 - [Git](https://git-scm.com/)
 - [Node.js](https://nodejs.org/en)
-- [npm](https://www.npmjs.com/) (Node Package Manager or similar)
-- [docker](https://www.docker.com/)
-- [prisma](https://www.prisma.io/)
-- [postgresql](https://www.postgresql.org/)
+- [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/)
+- [Docker](https://www.docker.com/)
+- [Prisma](https://www.prisma.io/)
 
-**01 - Cloning the Repository**
+### 2️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/souz-dev/register-form-api
-cd register-form-api
+git clone https://github.com/souz-dev/cep-validation-api
+cd cep-validation-api
+```
+
+### 3️⃣ Install Dependencies
+
+```bash
+npm install
+```
+
+### 4️⃣ Set Up Environment Variables
+
+Create a `.env` file and fill in the required variables.
+
+### 5️⃣ Run with Docker
+
+Ensure Docker is installed and running:
+
+```bash
+docker-compose up --build
+```
+
+### 6️⃣ Run the Project Locally
+
+To run the application in development mode:
+
+```bash
+npm run dev
+```
+
+### 7️⃣ Run Tests
+
+Run unit and integration tests:
+
+```bash
+npm test
+```
+
+---
+ <a name="contributing">🤝 Contributing</a>
+
+Contributions, issues, and feature requests are welcome!
+
+1. Fork it (<https://github.com/souz-dev/cep-validation-api>)
+2. Create your feature branch (`git checkout -b feature/fooBar`)
+3. Commit your changes (`git commit -am 'Add some fooBar'`)
+4. Push to the branch (`git push origin feature/fooBar`)
+5. Create a new Pull Request
+
+## <a name="authors">👥 Authors</a>
+
+<table style="border-collapse: collapse; table-layout: auto text-align: left;">
+
+  <tbody>
+    <tr>
+      <td style="padding: 10px; border: 1px solid #ddd;">
+        <img src="https://avatars.githubusercontent.com/u/72813560?s=400&u=8d8a139a3376a866a0c901dbba3428a876d79b60&v=4" width="60" style="border-radius: 50%; display: block; margin: 0 auto;">
+      </td>
+      <td style="padding: 10px; border: 1px solid #ddd;">Hiago Souza</td>
+      <td style="padding: 10px; border: 1px solid #ddd;">
+        <a href="https://www.linkedin.com/in/souz-dev/" target="_blank">LinkedIn</a> |
+        <a href="https://github.com/souz-dev" target="_blank">GitHub</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+### 🚀 Happy Coding! 🎉
+
