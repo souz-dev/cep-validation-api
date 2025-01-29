@@ -95,7 +95,15 @@ Ensure Docker is installed and running:
 docker-compose up --build
 ```
 
-### 6️⃣ Run the Project Locally
+### 6️⃣ Configuring Prisma
+
+Apply the migrations to the database:
+
+```bash
+npx prisma migrate dev
+```
+
+### 7️⃣ Run the Project Locally
 
 To run the application in development mode:
 
@@ -103,7 +111,8 @@ To run the application in development mode:
 npm run dev
 ```
 
-### 7️⃣ Run Tests
+
+### 8️⃣ Run Tests
 
 Run unit and integration tests:
 
