@@ -2,10 +2,13 @@ import {
   CepValidator,
   CepValidatorResult,
 } from "@/data/protocols/cep-validator";
+import { serverError } from "@/presentation/helpers/http-helper";
 import axios from "axios";
 
 export class BrasilApiValidator implements CepValidator {
-  async validate(cep: string): Promise<CepValidatorResult> {
+  async validate(
+    cep: string
+  ): Promise<CepValidatorResult | { statusCode: number; body: Error }> {
     try {
       const response = await axios.get(
         `https://brasilapi.com.br/api/cep/v1/${cep}`
@@ -18,13 +21,7 @@ export class BrasilApiValidator implements CepValidator {
         district: response.data.neighborhood,
       };
     } catch (error) {
-      return {
-        cep: "",
-        state: "",
-        city: "",
-        street: "",
-        district: "",
-      };
+      return serverError(error as Error);
     }
   }
 }

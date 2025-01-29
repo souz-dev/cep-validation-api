@@ -6,7 +6,7 @@ import { makeUpdateAddressController } from "../factories/update-address";
 import { makeDeleteAddressController } from "../factories/delete-address";
 
 export const setupCepRoutes = (router: Router): void => {
-  router.post("/cep", adaptRoute(makeValidateCepController()));
+  router.post("/addresses", adaptRoute(makeValidateCepController()));
   router.get("/addresses", adaptRoute(makeListAddressesController()));
   router.put("/addresses/:id", adaptRoute(makeUpdateAddressController()));
   router.delete("/addresses/:id", adaptRoute(makeDeleteAddressController()));

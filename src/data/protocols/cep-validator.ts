@@ -7,5 +7,7 @@ export interface CepValidatorResult {
 }
 
 export interface CepValidator {
-  validate: (cep: string) => Promise<CepValidatorResult>;
+  validate: (
+    cep: string
+  ) => Promise<CepValidatorResult | { statusCode: number; body: Error }>;
 }
